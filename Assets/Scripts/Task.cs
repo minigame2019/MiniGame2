@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Task : MonoBehaviour
 {
-    Player Player;
+    public Player Player;
 
     public string Name;
 
