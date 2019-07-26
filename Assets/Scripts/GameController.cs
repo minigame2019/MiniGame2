@@ -9,8 +9,10 @@ public class GameController : MonoSingleton<GameController>
     Player CurrentPlayer;
     Inventory Inventory;
     List<ResourceArea> ResourceAreas = new List<ResourceArea>();
+    GlobalTime GlobalTime;
     void Start()
     {
+        GlobalTime =  GlobalTime.Instance;
         Transform BtnPanel = this.transform.Find("PersonCardsPanel/ButtonPanel");
         Debug.Log(BtnPanel);
         for (int i = 0;i < 5; i++)
