@@ -14,16 +14,21 @@ public class AreaStatus : MonoBehaviour
     public int numFood = 0;
 
 
+    int RandInt(int min,int max)
+    {
+        byte[] buffer = Guid.NewGuid().ToByteArray();
+        int seed = BitConverter.ToInt32(buffer, 0);
+        System.Random random = new System.Random(seed);
+        return random.Next(min, max);
+    }
+
     /// <summary>
     /// 参数为各种可能的status的权重
     /// </summary>
     int RandStatus(int w_empty = 1, int w_wood = 0, int w_iron = 0, int w_food = 0)
     {
-        byte[] buffer = Guid.NewGuid().ToByteArray();
-        int seed = BitConverter.ToInt32(buffer, 0);
-        System.Random random = new System.Random(seed);
         int w_sum = w_empty + w_wood + w_iron + w_food;
-        int result = random.Next(1, w_sum);
+        int result = RandInt(1, w_sum);
         if(result<=w_empty)
         {
             return 0;
@@ -80,21 +85,21 @@ public class AreaStatus : MonoBehaviour
             //empty
             case 0:
                 statusText.text = "";
-                SetResource(0, 0, 5);
+                SetResource(0, 0, 10 + RandInt(-5, 5));
                 break;
             //wood
             case 1:
                 statusText.text = "林";
-                SetResource(100, 0, 20);
+                SetResource(100 + RandInt(-40, 40), 0, 20 + RandInt(-5, 5));
                 break;
             //iron
             case 2:
                 statusText.text = "矿";
-                SetResource(0, 100, 0);
+                SetResource(0, 100 + RandInt(-40, 40), 0);
                 break;
             case 3:
                 statusText.text = "农";
-                SetResource(0, 0, 200);
+                SetResource(0, 0, 200 + RandInt(-100, 100));
                 break;
             default:
                 statusText.text = "X";
