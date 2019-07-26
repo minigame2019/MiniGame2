@@ -2598,6 +2598,7 @@ MonoBehaviour:
   curX: 0
   curY: 0
   curAreaStatus: {fileID: 0}
+  curAS: {fileID: 0}
 --- !u!1 &781443809
 GameObject:
   m_ObjectHideFlags: 0
@@ -4182,7 +4183,6 @@ GameObject:
   - component: {fileID: 1566662798}
   - component: {fileID: 1566662797}
   - component: {fileID: 1566662796}
-  - component: {fileID: 1566662801}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -4202,6 +4202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f65f8cd949879744a93797c97ec8eb51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentPlayer: {fileID: 0}
   Inventory: {fileID: 0}
 --- !u!114 &1566662797
 MonoBehaviour:
@@ -4287,19 +4288,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1.4, y: 0}
   m_SizeDelta: {x: 1545.4, y: 797.3}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1566662801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1566662795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d440e912f4c648a49be20416f3ab7916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  car: {fileID: 615536042}
 --- !u!1 &1569745678
 GameObject:
   m_ObjectHideFlags: 0
