@@ -106,6 +106,16 @@ public class GameController : MonoSingleton<GameController>
 
     }
 
+    public Task CreateTask(string name, Player player, bool isloop, float consumetime)
+    {
+        Task t1 = this.gameObject.AddComponent<Task>();
+        t1.Name = name;
+        t1.IsLoop = isloop;
+        t1.ConsumeTime = consumetime;
+        t1.Player = player;
+        return t1;
+    }
+
     private void MessageHistoryUpdate()
     {
 
@@ -115,6 +125,7 @@ public class GameController : MonoSingleton<GameController>
     {
         
     }
+
 
     private void InventoryValueChanged(Item item)
     {
