@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
+    public Font Font;
     private List<InventorySlot> InventorySlots = new List<InventorySlot>();
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,7 @@ public class Inventory : MonoBehaviour
         GameObject obj = Instantiate(new GameObject());
         obj.transform.parent = content;
         InventorySlot AddSlot = obj.AddComponent<InventorySlot>();
+        AddSlot.Font = Font;
         AddSlot.Item = item;
         AddSlot.Count = num;
         AddSlot.SetText();

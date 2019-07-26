@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class InventorySlot : MonoBehaviour
 {
+    public Font Font;
     public Item Item;
     public int Count = 0;
     public bool ValueChanged;
@@ -36,13 +37,16 @@ public class InventorySlot : MonoBehaviour
     public void SetText()
     {
         Text t = this.GetComponent<Text>();
+        
         if (t == null)
         {
             Text a = this.gameObject.AddComponent<Text>();
+            a.font = Font;
             a.text = this.Item.Name + ":" + this.Count.ToString();
         }
         else
         {
+            t.font = Font;
             t.text = this.Item.Name + ":" + this.Count.ToString();
         }
     }

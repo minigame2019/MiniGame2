@@ -20,8 +20,9 @@ public class Player : MonoBehaviour
         {
             foreach (Task t in Tasks)
             {
-                Destroy(t.gameObject);
-
+                Destroy(t);
+                
+                
             }
             this.Tasks.Clear();
         }
@@ -74,5 +75,6 @@ public class Player : MonoBehaviour
                 t.OnStop();
             }
         }
+        StartNextTask();
     }
 }

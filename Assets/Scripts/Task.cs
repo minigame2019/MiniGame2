@@ -37,6 +37,7 @@ public class Task : MonoBehaviour
         Debug.Log("Finish " + Name);
         if (IsLoop)
         {
+            GameController.Instance.Inventory.OnItemAdded(new Item(1, "wood"),1);
             StartTime = GlobalTime.Instance.CurrentTime;
         }
         else

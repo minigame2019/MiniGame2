@@ -7,7 +7,7 @@ public class GameController : MonoSingleton<GameController>
     // Start is called before the first frame update
     List<Player> Players = new List<Player>();
     Player CurrentPlayer;
-    Inventory Inventory;
+    public Inventory Inventory;
     List<ResourceArea> ResourceAreas = new List<ResourceArea>();
     GlobalTime GlobalTime;
     void Start()
@@ -32,42 +32,40 @@ public class GameController : MonoSingleton<GameController>
         
     }
 
+    public void StopAllTask()
+    {
+        CurrentPlayer.StopTask();
+    }
+    public void CreateAllTask()
+    {
+        Task t1 = this.gameObject.AddComponent<Task>();
 
+        Debug.Log(t1);
+        t1.Name = "Go";
+        t1.IsLoop = false;
+        t1.ConsumeTime = 100;
+        t1.Player = CurrentPlayer;
 
+        this.CurrentPlayer.Tasks.Add(t1);
+
+        Task t2 = this.gameObject.AddComponent<Task>();
+        t2.Name = "Doing";
+        t2.IsLoop = true;
+        t2.ConsumeTime = 100;
+        t2.Player = CurrentPlayer;
+
+        this.CurrentPlayer.Tasks.Add(t2);
+        Task t3 = this.gameObject.AddComponent<Task>();
+        t3.Name = "Return";
+        t3.IsLoop = false;
+        t3.ConsumeTime = 100;
+        t3.Player = CurrentPlayer;
+        this.CurrentPlayer.Tasks.Add(t3);
+        this.CurrentPlayer.StartNextTask();
+    }
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            Task t1 = this.gameObject.AddComponent<Task>();
-            
-            Debug.Log(t1);
-            t1.Name = "Go";
-            t1.IsLoop = false;
-            t1.ConsumeTime = 100;
-            t1.Player = CurrentPlayer;
-
-            this.CurrentPlayer.Tasks.Add(t1);
-
-            Task t2 = this.gameObject.AddComponent<Task>();
-            t2.Name = "Doing";
-            t2.IsLoop = true;
-            t2.ConsumeTime = 100;
-            t2.Player = CurrentPlayer;
-
-            this.CurrentPlayer.Tasks.Add(t2);
-            Task t3 = this.gameObject.AddComponent<Task>();
-            t3.Name = "Return";
-            t3.IsLoop = false;
-            t3.ConsumeTime = 100;
-            t3.Player = CurrentPlayer;
-
-            this.CurrentPlayer.Tasks.Add(t1);
-            this.CurrentPlayer.Tasks.Add(t3);
-            this.CurrentPlayer.StartNextTask();
-        }
-
-
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Item item = new Item(1, "Wood");
