@@ -13,7 +13,9 @@ public class AreaStatus : MonoBehaviour
     public int numIron = 0;
     public int numFood = 0;
 
-
+    /// <summary>
+    /// 生成一个min到max之间的随机int
+    /// </summary>
     int RandInt(int min,int max)
     {
         byte[] buffer = Guid.NewGuid().ToByteArray();
@@ -71,12 +73,13 @@ public class AreaStatus : MonoBehaviour
 
     void GetResource(int wood = 0, int iron = 0, int food = 0)
     {
-        if (numWood >= wood)
-        {
-
-        }
+        
     }
 
+
+    /// <summary>
+    /// 设置地区的状态（空地or林地or...)
+    /// </summary>
     public void SetStatus(int s)
     {
         status = s;

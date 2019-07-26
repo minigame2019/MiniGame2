@@ -64,7 +64,7 @@ public class MoveControllor : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.A))
         {
-            if (carPosX > -areas.GetComponent<AreaManager>().row / 2 && !isMoving)
+            if (carPosX > areas.GetComponent<AreaManager>().leftCol && !isMoving)
             {
                 tarAreaStatus = areas.transform.Find(PosPath(carPosX-1, carPosY)).gameObject;
                 if (tarAreaStatus.GetComponent<AreaStatus>().status != -1)
@@ -78,7 +78,7 @@ public class MoveControllor : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.D))
         {
-            if (carPosX < areas.GetComponent<AreaManager>().row / 2 && !isMoving)
+            if (carPosX < areas.GetComponent<AreaManager>().rightCol && !isMoving)
             {
                 tarAreaStatus = areas.transform.Find(PosPath(carPosX+1, carPosY)).gameObject;
                 if (tarAreaStatus.GetComponent<AreaStatus>().status != -1)
