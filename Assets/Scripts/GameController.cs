@@ -10,6 +10,7 @@ public class GameController : MonoSingleton<GameController>
     Inventory Inventory;
     List<ResourceArea> ResourceAreas = new List<ResourceArea>();
     GlobalTime GlobalTime;
+    //Dic
     void Start()
     {
         GlobalTime =  GlobalTime.Instance;
@@ -82,6 +83,11 @@ public class GameController : MonoSingleton<GameController>
     private void InventoryAdded()
     {
         
+    }
+
+    private void areaUpdate()
+    {
+        int w_wood;
     }
 
     private void InventoryValueChanged(Item item)
