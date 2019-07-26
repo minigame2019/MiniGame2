@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GlobalTime : MonoSingleton<GlobalTime>
+public class Zone : MonoSingleton<Zone>
 {
-    public float CurrentTime = 0;
-    private bool IsPaused;
+    public float StartPos;
+    public float EndPos;
+    public float Speed;
+
     // Use this for initialization
     void Start()
     {
@@ -14,7 +16,6 @@ public class GlobalTime : MonoSingleton<GlobalTime>
     // Update is called once per frame
     void Update()
     {
-        CurrentTime += Time.deltaTime;
-        //Debug.Log(CurrentTime);
+
     }
 }
