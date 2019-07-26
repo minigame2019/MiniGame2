@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GlobalTime : MonoSingleton<GlobalTime>
 {
-    float CurrentTime = 0;
+    public float CurrentTime = 0;
     private bool IsPaused;
     // Use this for initialization
     void Start()
@@ -15,6 +15,6 @@ public class GlobalTime : MonoSingleton<GlobalTime>
     void Update()
     {
         CurrentTime += 1;
-        Debug.Log(CurrentTime);
+        //Debug.Log(CurrentTime);
     }
 }

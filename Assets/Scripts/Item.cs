@@ -11,6 +11,12 @@ public class Item
         this.ID = ID;
         this.Name = Name;
     }
+
+    public Item(Item i)
+    {
+        this.ID = i.ID;
+        this.Name=  i.Name;
+    }
     public static bool operator == (Item i1,Item i2)
     {
         if (object.Equals(i1, null) || object.Equals(i2, null))
