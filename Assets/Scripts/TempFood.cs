@@ -2,19 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class Temp : MonoBehaviour
+public class TempFood : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
         Button btn = this.GetComponent<Button>();
-        btn.onClick.AddListener(GameController.Instance.CreateAllTask);
+        btn.onClick.AddListener(delegate () { GameController.Instance.CreateAllTask("food"); });
     }
-    
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

@@ -37,7 +37,24 @@ public class Task : MonoBehaviour
         Debug.Log("Finish " + Name);
         if (IsLoop)
         {
-            GameController.Instance.Inventory.OnItemAdded(new Item(1, "wood"),1);
+            if (this.Name == "wood")
+            {
+                GameController.Instance.Inventory.OnItemAdded(new Item(1, "wood"), 1);
+                ResLeft.Instance.curAS.numWood--;
+            }
+            else
+            {
+                if (this.Name == "iron") 
+                {
+                    GameController.Instance.Inventory.OnItemAdded(new Item(2, "iron"), 1);
+                    ResLeft.Instance.curAS.numIron--;
+                }
+                else
+                {
+                    GameController.Instance.Inventory.OnItemAdded(new Item(3, "food"), 1);
+                    ResLeft.Instance.curAS.numFood--;
+                }
+            }
             StartTime = GlobalTime.Instance.CurrentTime;
         }
         else

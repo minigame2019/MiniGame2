@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class ResLeft : MonoBehaviour
+public class ResLeft : MonoSingleton<ResLeft>
 {
     public GameObject car;
     
@@ -17,7 +17,7 @@ public class ResLeft : MonoBehaviour
     private Text textWood;
     private Text textIron;
     private Text textFood;
-    private AreaStatus curAS;
+    public AreaStatus curAS;
 
     string PosPath(int x, int y)
     {
@@ -59,6 +59,5 @@ public class ResLeft : MonoBehaviour
         textWood.text = "余量：" + curAS.numWood.ToString();
         textIron.text = "余量：" + curAS.numIron.ToString();
         textFood.text = "余量：" + curAS.numFood.ToString();
-
     }
 }

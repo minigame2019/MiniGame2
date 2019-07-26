@@ -6,7 +6,7 @@ public class GameController : MonoSingleton<GameController>
 {
     // Start is called before the first frame update
     List<Player> Players = new List<Player>();
-    Player CurrentPlayer;
+    public Player CurrentPlayer;
     public Inventory Inventory;
     List<ResourceArea> ResourceAreas = new List<ResourceArea>();
     GlobalTime GlobalTime;
@@ -25,6 +25,7 @@ public class GameController : MonoSingleton<GameController>
             Btn.onClick.AddListener(delegate {CurrentPlayer = ToAdd; PersonCardUpdate(); });
         }
         CurrentPlayer = Players[0];
+        Debug.Log(CurrentPlayer);
         PersonCardUpdate();
         Transform InvTrans = transform.Find("InventoryPanel").GetChild(0);
         Inventory = InvTrans.GetComponent<Inventory>();
@@ -36,29 +37,29 @@ public class GameController : MonoSingleton<GameController>
     {
         CurrentPlayer.StopTask();
     }
-    public void CreateAllTask()
+    public void CreateAllTask(string resname)
     {
         Task t1 = this.gameObject.AddComponent<Task>();
 
         Debug.Log(t1);
         t1.Name = "Go";
         t1.IsLoop = false;
-        t1.ConsumeTime = 100;
+        t1.ConsumeTime = 1;
         t1.Player = CurrentPlayer;
 
         this.CurrentPlayer.Tasks.Add(t1);
 
         Task t2 = this.gameObject.AddComponent<Task>();
-        t2.Name = "Doing";
+        t2.Name = resname;
         t2.IsLoop = true;
-        t2.ConsumeTime = 100;
+        t2.ConsumeTime = 1;
         t2.Player = CurrentPlayer;
 
         this.CurrentPlayer.Tasks.Add(t2);
         Task t3 = this.gameObject.AddComponent<Task>();
         t3.Name = "Return";
         t3.IsLoop = false;
-        t3.ConsumeTime = 100;
+        t3.ConsumeTime = 1;
         t3.Player = CurrentPlayer;
         this.CurrentPlayer.Tasks.Add(t3);
         this.CurrentPlayer.StartNextTask();
@@ -94,13 +95,6 @@ public class GameController : MonoSingleton<GameController>
 
     private void PersonCardUpdate()
     {
-        for (int i = 0; i < 5; i++)
-        {
-            if (Players[i] == CurrentPlayer)
-            {
-                //Update Person Attribute
-            }
-        }
 
     }
 

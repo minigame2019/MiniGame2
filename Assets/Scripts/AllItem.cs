@@ -22,4 +22,8 @@ public class AllItem : MonoSingleton<AllItem>
         Item item = new Item(ItemDict[id]);
         return item;
     }
+    public Item CreateItemByName(string name)
+    {
+        return null;
+    }
 }
