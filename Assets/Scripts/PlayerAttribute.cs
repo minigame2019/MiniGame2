@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 public class PlayerAttribute: MonoBehaviour
 {
-    public int Hp = 1;
-    public int Attack = 1;
-    public int Defend = 1;
+    public int Hp = 100;
+    public int Attack = 13;
+    public int Defend = 9;
     public int Luck;
-    public int Hunger = 1;
+    public int Hunger = 80;
     public float Speed;
     public float Digger;
     public float Pressure;

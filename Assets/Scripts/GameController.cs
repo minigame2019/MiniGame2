@@ -39,6 +39,7 @@ public class GameController : MonoSingleton<GameController>
     }
     public void CreateAllTask(string resname)
     {
+        print("create all");
         Task t1 = this.gameObject.AddComponent<Task>();
 
         Debug.Log(t1);

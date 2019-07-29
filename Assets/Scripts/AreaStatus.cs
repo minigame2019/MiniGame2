@@ -4,6 +4,8 @@ using System.Security.Cryptography;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using FightSystem;
+
 public class AreaStatus : MonoBehaviour
 {
     public int status = 0;
@@ -13,6 +15,8 @@ public class AreaStatus : MonoBehaviour
     public int numIron = 0;
     public int numFood = 0;
 
+    public int enemyID = -1;
+    public bool enemy_alive = false;
 
     int RandInt(int min,int max)
     {
@@ -67,6 +71,17 @@ public class AreaStatus : MonoBehaviour
         numWood = wood;
         numIron = iron;
         numFood = food;
+
+        double rand = new System.Random().NextDouble();
+        if(new System.Random().NextDouble() > 0.5)
+        {
+            enemyID = RandInt(0, 8);
+            enemy_alive = true;
+        }
+        else
+        {
+            enemyID = -1;
+        }
     }
 
     void GetResource(int wood = 0, int iron = 0, int food = 0)
@@ -89,16 +104,16 @@ public class AreaStatus : MonoBehaviour
                 break;
             //wood
             case 1:
-                statusText.text = "林";
+                statusText.text = "木";
                 SetResource(100 + RandInt(-40, 40), 0, 20 + RandInt(-5, 5));
                 break;
             //iron
             case 2:
-                statusText.text = "矿";
+                statusText.text = "石";
                 SetResource(0, 100 + RandInt(-40, 40), 0);
                 break;
             case 3:
-                statusText.text = "农";
+                statusText.text = "田";
                 SetResource(0, 0, 200 + RandInt(-100, 100));
                 break;
             default:
@@ -106,6 +121,22 @@ public class AreaStatus : MonoBehaviour
                 status = -1;
                 break;
         }
+    }
+
+    public void fight()
+    {
+        if(enemyID < 0 || !enemy_alive)
+        {
+            print("no enemy");
+            return;
+        }
+
+        enemy_alive = false;
+
+        Player player = GameController.Instance.CurrentPlayer;
+        FightResult fr = new Fight(new Fighter(player), new EnemyCreator().createByID(enemyID)).trueResult();
+
+        player.PlayerAttribute.Hp -= fr.damage;
     }
 
     // Update is called once per frame

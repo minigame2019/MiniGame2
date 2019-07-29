@@ -23,7 +23,7 @@ public class ResourceArea : MonoBehaviour
     {
 
     }
-
+    /*
     public List<Task> CreateTasks()
     {
         List<Task> Output = new List<Task>();
@@ -48,5 +48,5 @@ public class ResourceArea : MonoBehaviour
 
         return null;
     }
-
+    */
 }
