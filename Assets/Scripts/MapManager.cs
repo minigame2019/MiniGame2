@@ -5,7 +5,7 @@ using UnityEngine;
 public class MapManager : MonoBehaviour
 {
     AreaManager areaM;
-
+    float t = 0f;
     private void Awake()
     {
         areaM = GetComponent<AreaManager>();
@@ -14,5 +14,18 @@ public class MapManager : MonoBehaviour
     void InitGame()
     {
         areaM.SetupScene();
+    }
+
+    private void Update()
+    {
+        if (t < 20f)
+        {
+            t += Time.deltaTime;
+        }
+        else
+        {
+            areaM.BoardRefresh();
+            t = 0f;
+        }
     }
 }
